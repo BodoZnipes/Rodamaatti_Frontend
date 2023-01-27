@@ -1,0 +1,117 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>PPMFrontend</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link href="css\bootstrap.min.css" rel="stylesheet">
+    <script src="js\bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.2.0/chart.min.js" integrity="sha512-qKyIokLnyh6oSnWsc5h21uwMAQtljqMZZT17CIMXuCQNIfFSFF4tJdMOaJHL9fQdJUANid6OB6DRR0zdHrbWAw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+</head>
+<body onload="searchpp()">
+    <div class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="index.html">Rodamaati</a>
+        <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+        <div class="navbar-nav">
+            <div class="nav-item text-nowrap">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col"> <!--col-sm-9 col-xs-12 col-lg-10 pe-4 -->
+            <nav id="sidebarMenu" class=" d-md-block bg-light sidebar collapse vh-100 ">
+                <div class="position-sticky pt-3 ">
+                    <h6
+                        class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                        <span>Diagramme</span>
+                        <a class="link-secondary" href="#" aria-label="Add a new report">
+                            <span data-feather="plus-circle"></span>
+                        </a>
+                    </h6>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="index.html">
+                                <span data-feather="home"></span>
+                                Statistik Parkplätze
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " href="addspace.html">
+                                <span data-feather="file"></span>
+                                Parkplatz hinzufügen
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="editspace.html">
+                                <span data-feather="shopping-cart"></span>
+                                Parkplatz bearbeiten
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <div class="col-10">
+            <main class="ms-sm-auto">
+                <div
+                    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <div class="btn-toolbar mb-2 mb-md-0">
+                        <select name="Space" type="button" class="form-control btn btn-sm btn-outline-secondary "
+                            id="Spaces" 
+                            onfocus="this.selectedIndex = -1;">
+                        </select>
+                    </div>
+                </div>
+         <form id="editspaceform">
+                    <h1> Parkplatz abändern</h1>
+                    
+                      <div class="form-group mb-4">
+                        <label for="exampleFormControlInput1">Maximale Parkdauer</label>
+                        <input type="text" name="pp_max_duration_h" ngModel class="form-control mb-4" id="exampleFormControlInput1" placeholder="Maximale Parkdauer eingeben">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleFormControlInput1">Parkkosten</label>
+                        <input type="text" name="pp_cost_h" ngModel class="form-control mb-4" id="exampleFormControlInput1" placeholder="Parkkosten eingeben">
+                      </div>
+                      <!--
+                      <div class="file-upload-wrapper">
+                        <label name="pp_plan" >Parkplatzbild</label>
+                        <p>
+                        <input  type="file"  class="file-upload" onchange="encodeImageFileAsURL(this)" onchange="display(event)"/>
+                        <img srce="" alt="" id="showImg">
+                        </p>
+                      </div>
+                      -->
+                      <div >
+                      <button type="submit" onclick="editSpace()"  style="width: 200px;">
+                        Parkplatz abändern
+                      </button>
+                    </div>
+                  </form>
+                <script src="js\skript.js"></script> <!-- Skript muss danach eingebunden werden damit das canvas angezeigt wird -->
+            </main>
+        </div>
+    </div>
+</body>
+</html>
