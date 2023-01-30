@@ -32,7 +32,6 @@
             aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
         <div class="navbar-nav">
             <div class="nav-item text-nowrap">
             </div>
@@ -94,15 +93,15 @@
                         <label for="exampleFormControlInput1">Parkkosten</label>
                         <input type="text" name="pp_cost_h" ngModel class="form-control mb-4" id="exampleFormControlInput1" placeholder="Parkkosten eingeben">
                       </div>
-                      <!--
+                      
                       <div class="file-upload-wrapper">
                         <label name="pp_plan" >Parkplatzbild</label>
                         <p>
-                        <input  type="file"  class="file-upload" onchange="encodeImageFileAsURL(this)" onchange="display(event)"/>
-                        <img srce="" alt="" id="showImg">
+                        <input  type="file"  class="file-upload" onchange="encodeImageFileAsURL(this) ;loadFile(event)"/>
+                        <img id="output">
                         </p>
                       </div>
-                      -->
+                      
                       <div >
                       <button type="submit" onclick="editSpace()"  style="width: 200px;">
                         Parkplatz abändern

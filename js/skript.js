@@ -1,12 +1,7 @@
 // einmalige Definiton der URL
-const URL = 'http://127.0.0.1:5000';
+const URL = 'http://5.75.148.247:80';
 
 
-// Charts
-
-
-
-// Request für Parkplatz Kennzahlen eines spezifischen Parkplatzes
 
 
 
@@ -30,8 +25,9 @@ async function searchpp() {
         selector.add(option)
     });
 
+    console.log(option.id)
 
-
+  //  
 }
 
 
@@ -83,6 +79,10 @@ async function showpp(id){
         document.getElementById("popular_month_container").innerHTML=""
         document.getElementById("popular_days_container").innerHTML=""
         document.getElementById("popular_lot_container").innerHTML=""
+        document.getElementById("2").style.display="none"
+        document.getElementById("3").style.display="none"
+        document.getElementById("4").style.display="none"
+
         document.getElementById("KPIs").style.display="none"
         
         
@@ -110,6 +110,7 @@ async function showpp(id){
     console.log(einheit)
     
     //chart 2 beleibte Monate
+    document.getElementById("2").style.display="block"
 
     var popluar_times = pp_profil.res_popular_months
 
@@ -124,6 +125,7 @@ async function showpp(id){
 
     //chart 3 beliebte Tage
 
+    document.getElementById("3").style.display="block"
     var popluar_times = pp_profil.res_popular_days
 
     var timearray = []
@@ -136,6 +138,7 @@ async function showpp(id){
     console.log(einheit)
 
     //chart 4 beliebte Parkplätze 
+    document.getElementById("4").style.display="block"
 
     var popluar_times = pp_profil.res_popular_lot
 
@@ -151,6 +154,7 @@ async function showpp(id){
 
     //Div-Container mit KPI's sichtbar machen
     document.getElementById("KPIs").style.display="block";
+
 
     //KPI_cancel_rate
 
@@ -233,8 +237,7 @@ var mychart = new Chart(ctx, {
         e.preventDefault()});
 
         const payload = new FormData(form);
-       // const data =Object.fromEntries(payload);
-       const data ={"pp_max_duration_h" : payload.get('pp_max_duration_h'), "pp_cost_h": payload.get('pp_cost_h'), "pp_nickname":payload.get('pp_nickname') , "pp_plz": payload.get('pp_plz'), "pp_street": payload.get('pp_street'), "pp_state":payload.get('pp_state') ,"plan_img": base64Output}
+       const data ={ "pp_max_duration_h" : payload.get('pp_max_duration_h'), "pp_cost_h": payload.get('pp_cost_h'), "pp_nickname":payload.get('pp_nickname') , "pp_plz": payload.get('pp_plz'), "pp_street": payload.get('pp_street'), "pp_state":payload.get('pp_state') ,"plan_img": base64Output}
         fetch(URL + "/org/parkingplace", {
             method: 'POST',
             headers: {
@@ -255,12 +258,15 @@ var mychart = new Chart(ctx, {
     async function editSpace(){
         const form = document.getElementById('editspaceform');
   
+        var e = document.getElementById("Spaces");
+        var index = e.selectedIndex;
+        var id = e[index].id
+
     form.addEventListener('submit', function(e) {
         e.preventDefault()});
 
         const payload = new FormData(form);
-        //const data =Object.fromEntries(payload);
-        const data ={"pp_id": option.id ,"pp_max_duration_h" : payload.get('pp_max_duration_h'), "pp_cost_h": payload.get('pp_cost_h')}
+        const data ={"pp_id": id ,"pp_max_duration_h" : payload.get('pp_max_duration_h'), "pp_cost_h": payload.get('pp_cost_h'), "plan_img": base64Output }
         fetch(URL + "/org/parkingplace", {
             method: 'PATCH',
             headers: {
@@ -284,6 +290,8 @@ var mychart = new Chart(ctx, {
     reader.readAsDataURL(event.target.files[0]);
   };
   
+
+  //Einzelne Parkplätze dem großen Parkplatz hinzufügen
 
 async function createparkinglots(pp_id){
 
