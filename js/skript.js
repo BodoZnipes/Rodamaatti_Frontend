@@ -1,6 +1,6 @@
 // einmalige Deklaration der URL
 const URL = 'http://5.75.148.247:80';
-
+//const URL = 'http://127.0.0.1:5000';
 
 
 
@@ -177,7 +177,7 @@ async function showpp(id){
 
     const KPI2 = document.getElementById("KPI_res_avg_time");
     var popluar_times = pp_profil.res_avg_time
-    KPI2.innerHTML = popluar_times;
+    KPI2.innerHTML = (popluar_times/3600).toFixed(2);
 
     // Einzelne KPI_avg_turnover_rate sichtbar machen
     const KPI3 = document.getElementById("KPI_avg_turnover_rate");
@@ -187,7 +187,7 @@ async function showpp(id){
     // Einzelne KPI_estimated_turnover sichtbar machen
     const KPI4 = document.getElementById("KPI_estimated_turnover");
     var popluar_times = pp_profil.estimated_turnover
-    KPI4.innerHTML = popluar_times;
+    KPI4.innerHTML = popluar_times.toFixed(2);
 
 }
 }
